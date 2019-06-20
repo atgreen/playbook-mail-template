@@ -23,6 +23,9 @@
   - name: Send the mail
     mail:
       host: smtp.gmail.com
+      port: 587
+      username: "{{ username }}"
+      password: "{{ password }}"
       to: Anthony Green <green@redhat.com>
       subject: Important Mail
       body: "{{ lookup('file', temp_mail_file.path) }}"
