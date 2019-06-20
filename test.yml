@@ -25,6 +25,6 @@
       host: smtp.gmail.com
       to: Anthony Green <green@redhat.com>
       subject: Important Mail
-      body: "{{ lookup('file', {{ temp_mail_file.path }}) }}"
+      body: "{{ lookup('file', temp_mail_file.path) }}"
     delegate_to: localhost
  
