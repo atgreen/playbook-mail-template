@@ -1,6 +1,11 @@
 ---
 - name: Send an email based on a template
   hosts: all
+  handlers:
+  - name: Delete temp file
+    file: 
+      name: "{{ temp_mail_file }}"
+      state: absent
   tasks:
   - name: Create a temp file
     tempfile: 
