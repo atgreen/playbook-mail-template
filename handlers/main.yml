@@ -1,0 +1,5 @@
+---
+- name: Delete temp file
+  file: 
+    name: "{{ temp_mail_file }}"
+    state: absent

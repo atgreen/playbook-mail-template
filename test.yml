@@ -1,0 +1,24 @@
+---
+- name: Send an email based on a template
+  hosts: all
+  tasks:
+  - name: Create a temp file
+    tempfile: 
+      state: file
+      suffix: mail
+    register: temp_mail_file
+    notify: Delete temp file
+    delegate_to: localhost
+  - name: Create the mail
+    template:
+      src: mail.j2
+      dest: "{{ temp_mail_file.path }}"
+    delegate_to: localhost
+  - name: Send the mail
+    mail:
+      host: smtp.gmail.com
+      to: Anthony Green <green@redhat.com>
+      subject: Important Mail
+      body: "{{ lookup('file', {{ temp_mail_file.path }}) }}"
+    delegate_to: localhost
+ 
