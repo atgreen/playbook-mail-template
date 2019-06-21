@@ -1,0 +1,11 @@
+---
+- name: Touch a /tmp file
+  hosts: all
+  tasks:
+  - name: Create a temp file
+    tempfile: 
+      state: file
+      suffix: test
+    delegate_to: localhost
+
+ 
