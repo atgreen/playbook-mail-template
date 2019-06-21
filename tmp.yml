@@ -7,5 +7,10 @@
       state: file
       suffix: test
     delegate_to: localhost
-
+  - name: Show dir
+    shell: find /
+    register: foutput
+    delegate_to: localhost
+  - name: show it
+    debug: msg=foutput.stdout
  
